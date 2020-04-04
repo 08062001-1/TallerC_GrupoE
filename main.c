@@ -17,6 +17,22 @@
 /*
  * 
  */
+int invert(int n){
+    int invertir=0;
+    while(n>=1){
+        int residue=n%10;
+        invertir=invertir*10+residue;
+        n/=10;
+    }
+    return invertir;
+}
+
+int isCapicua(int number, int invertir){
+    if (number==invertir) {
+        return 1;
+    }
+}
+
 int isLeap(int year){
     if (year%4==0&&year%100!=0 ||year% 400==0) 
         return 1;
@@ -53,6 +69,18 @@ int calculateFibonacci(int number){
     }else{
         return calculateFibonacci(number-1)+calculateFibonacci(number-2);
    }
+}
+void calcCapicua(){
+    int number;
+    printf("Calcular si un número es Capicua\nENTER para continuar\n");
+    printf("Digite el numero");
+    scanf("%d", &number);
+    if (isCapicua(number,invert(number))==1) {
+        printf("El número %d Si es capicua %d", number, invert(number));
+    }else{
+        printf("El número %d No es capicua %d", number, invert(number));
+    }
+    getchar();
 }
 
 void calcLeap(){
@@ -131,7 +159,7 @@ void mainMenu() {
             case '4': 
             break;
             
-            case '5':
+            case '5': calcCapicua();
             break;
             
             case '6':
