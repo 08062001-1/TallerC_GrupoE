@@ -17,22 +17,43 @@
 /*
  * 
  */
-void calculateMCD(int less, int higher){
+int calculateFibonacci(int number){
+  if (number==1||number==2){
+        return 1;
+    }else{
+        return calculateFibonacci(number-1)+calculateFibonacci(number-2);
+   }
+}
 
+int calculateMCD(int less, int higher){
+ if (higher%less==0) 
+        return less;
+    return calculateMCD(higher%less, less);
 }
 
 void calcFibonacci(){
-    printf("Calcular termino de la serie Fibonacci\nENTER para Continuar");
-    getchar();
+    int number;
+    printf("Calcular termino de la serie Fibonacci\nENTER para Continuar\n");
+    printf("Digite el n-esimo termino\n");
+    scanf("%d", &number);
+
+    printf("N-esimo termino (%d) es --> %d",number,calculateFibonacci(number));
+
+   getchar();
 }
 
 void calcMCM(){
-    printf("Calcular Maximo Comun Divisor\nENTER para continuar");
+    int valOne, valTwo;
+    printf("Calcular Maximo Comun Divisor\nENTER para continuar\n");
+    printf("Digite los numeros\n");
+    scanf("%d %d", &valOne, &valTwo);
+    printf("El MCM de %d y %d es %d\n",valOne, valTwo,calculateMCD( valOne<valTwo?valOne:valTwo, valOne>valTwo?valOne:valTwo));
+   
     getchar();
-}
+} 
 
 void calcCousin(){
-    printf("Calcular números Primos\nENTER para continuar");
+    printf("Calcular números Primos\nENTER para continuar\n");
     getchar();
 }
 
@@ -55,7 +76,7 @@ void mainMenu() {
         scanf("%c", &option);
         fflush(stdin);
         switch(option){
-            case '1': calcFibonacci();
+            case '1' : calcFibonacci();
             break;
             
             case '2': calcMCM();
