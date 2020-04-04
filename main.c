@@ -18,7 +18,7 @@
  * 
  */
 void calculateMCD(int less, int higher){
-    //hola vamos a ver
+
 }
 
 void calcFibonacci(){
